@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>¿Que Cocinaré?</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="assets/underscore-min.js"></script>
+        <script src="assets/handlebars-v1.3.0.js"></script>
+        <script src="assets/backbone-min.js"></script>
+        <script src="app.js"></script>
+        <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Oxygen">
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="payload">
+                <header>
+                    <div class="logo">
+                        <a href="#">
+                            <img src="assets/images/logo.png" width="300" height="100" border="0" />
+                        </a>
+                    </div>
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href="#">Recetas</a>
+                            </li>
+                            <li>
+                                <a href="#">Especiales</a>
+                            </li>
+                            <li>
+                                <a href="#">Ingresar</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </header>
+                <div id="search">
+                    <form class="form-inline" role="form">
+                            <input type="text" name="query" class="form-control" placeholder="Receta, Ingrediente, Categoría" />
+                            <button class="btn btn-info">Buscar</button>
+                    </form>
+                </div>
+                <div id="content">
+                    <!-- add content here! .-->
+                </div>
+                <script id="home-template" type="text/x-handlebars-template">
+                    <section class="categories">
+                        <div class="category">
+                            <img src="assets/images/aperitivos.png" width="330" width="200" border="0" />
+                            <h3><a href="#aperitivos">Aperitivos</a></h3>
+                        </div>
+                        <div class="category">
+                            <img src="assets/images/desayunos.png" width="330" width="200" border="0" />
+                            <h3><a href="#desayunos">Desayunos</a></h3>
+                        </div>
+                        <div class="category">
+                            <img src="assets/images/vegetariano.png" width="330" width="200" border="0" />
+                            <h3><a href="#vegerariano">Vegetariano</a></h3>
+                        </div>
+                        <div class="category">
+                            <img src="assets/images/postres.png" width="330" width="200" border="0" />
+                            <h3><a href="#postres">Postres</a></h3>
+                        </div>
+                        <div class="category">
+                            <img src="assets/images/ensaladas.png" width="330" width="200" border="0" />
+                            <h3><a href="#ensaladas">Ensaladas</a></h3>
+                        </div>
+                        <div class="category">
+                            <img src="assets/images/saludable.png" width="330" width="200" border="0" />
+                            <h3><a href="#saludable">Saludable</a></h3>
+                        </div>
+                    </section>
+                    <section class="lists">
+                        <div class="list">
+                            <h4>Aperitivos</h4>
+                            <ul>
+                                {{#each aperitivos}}
+                                <li>
+                                    <img src="{{attributes.image}}" width="80" height="80" border="0" />
+                                    <h5><a href="{{attributes.link}}">{{attributes.title}}</a></h5>
+                                    <p>{{attributes.summary}}</p>
+                                </li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                        <div class="list">
+                            <h4>Desayunos</h4>
+                            <ul>
+                                {{#each desayunos}}
+                                <li>
+                                    <img src="{{attributes.image}}" width="80" height="80" border="0" />
+                                    <h5><a href="{{attributes.link}}">{{attributes.title}}</a></h5>
+                                    <p>{{attributes.summary}}</p>
+                                </li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                        <div class="list">
+                            <h4>Vegetariano</h4>
+                            <ul>
+                                {{#each vegetariano}}
+                                <li>
+                                    <img src="{{attributes.image}}" width="80" height="80" border="0" />
+                                    <h5><a href="{{attributes.link}}">{{attributes.title}}</a></h5>
+                                    <p>{{attributes.summary}}</p>
+                                </li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                        <div class="list">
+                            <h4>Postres</h4>
+                            <ul>
+                                {{#each postres}}
+                                <li>
+                                    <img src="{{attributes.image}}" width="80" height="80" border="0" />
+                                    <h5><a href="{{attributes.link}}">{{attributes.title}}</a></h5>
+                                    <p>{{attributes.summary}}</p>
+                                </li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                        <div class="list">
+                            <h4>Ensaladas</h4>
+                            <ul>
+                                {{#each ensaladas}}
+                                <li>
+                                    <img src="{{attributes.image}}" width="80" height="80" border="0" />
+                                    <h5><a href="{{attributes.link}}">{{attributes.title}}</a></h5>
+                                    <p>{{attributes.summary}}</p>
+                                </li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                        <div class="list">
+                            <h4>Saludable</h4>
+                            <ul>
+                                {{#each saludable}}
+                                <li>
+                                    <img src="{{attributes.image}}" width="80" height="80" border="0" />
+                                    <h5><a href="{{attributes.link}}">{{attributes.title}}</a></h5>
+                                    <p>{{attributes.summary}}</p>
+                                </li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </section>
+                </script>
+                <script id="aperitivos-template" type="text/x-handlebars-template">
+                	<div class="title">
+                	    <img src="assets/images/title-aperitivos.png" width="1000" height="150px" border="0" />
+                	</div>
+                	<div class="tagline">
+                	    <h3>Aquí tienes algunas ideas de aperitivos que puedes preparar para entretener a tus invitados.</h3>
+                	</div>
+                	<section class="featured">
+                	    <div class="recipe">
+                	        <img src="assets/images/aperitivo-01.png" width="247" height="247" border="0" />
+                	        <h4><a href="#">Receta 01</a></h4>
+                	    </div>
+                	    <div class="recipe">
+                	        <img src="assets/images/aperitivo-02.png" width="247" height="247" border="0" />
+                	        <h4><a href="#">Receta 01</a></h4>
+                	    </div>
+                	    <div class="recipe">
+                	        <img src="assets/images/aperitivo-03.png" width="247" height="247" border="0" />
+                	        <h4><a href="#">Receta 01</a></h4>
+                	    </div>
+                	    <div class="recipe">
+                	        <img src="assets/images/aperitivo-04.png" width="247" height="247" border="0" />
+                	        <h4><a href="#">Receta 01</a></h4>
+                	    </div>
+                	</section>
+                	<section class="list">
+                	    <div class="left">
+                	        <ul class="recipes">
+                	            {{#each aperitivos}}
+                	            <li>
+                	                <img src="{{attributes.image}}" width="100" height="100" border="0" />
+                	                <h5><a href="{{attributes.link}}">{{attributes.title}}</a></h5>
+                	                <p>{{attributes.summary}}</p>
+                	            </li>
+                	            {{/each}}
+                	        </ul>
+                	        <ul class="pagination pull-right">
+                	            <li><a href="#">&laquo;</a></li>
+                	            <li><a href="#">1</a></li>
+                	            <li><a href="#">2</a></li>
+                	            <li><a href="#">3</a></li>
+                	            <li><a href="#">4</a></li>
+                	            <li><a href="#">5</a></li>
+                	            <li><a href="#">&raquo;</a></li>
+                	        </ul>
+                	    </div>
+                	    <div class="right">
+                	        <h4>Tags</h4>
+                	        <div class="tags">
+                	            <span class="label">Pollo</span>
+                	            <span class="label">Pescado</span>
+                	            <span class="label">Lechuga</span>
+                	            <span class="label">Tomate</span>
+                	            <span class="label">Tocino</span>
+                	            <span class="label">Vapor</span>
+                	        </div>
+                	    </div>
+                	</section>
+                	<div class="clearfix"></div>
+                </script>
+                <footer>
+                    <a href="#">
+                            <img src="assets/images/logo-footer.png" width="150" height="50" border="0" />
+                    </a>
+                    <p class="copy">Copyright &copy; 2014 - Que Cocinare?. Todos los derechos reservados.</p>
+                    <ul>
+                        <li>
+                            <a href="#">Recetas</a>
+                        </li>
+                        <li>
+                            <a href="#">Especiales</a>
+                        </li>
+                        <li>
+                            <a href="#">Ingresar</a>
+                        </li>
+                    </ul>
+                </footer>
+            </div>
+        </div>
+    </body>
+</html>
